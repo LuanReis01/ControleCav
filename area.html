@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cavalaria do Oeste</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+crossorigin="anonymous">
+<style>
+    /* Navbar com imagem de fundo */
+    .navbar-custom {
+        background-image: url('fundo-navbar.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        padding: 20px 0;
+    }
+
+    .navbar-custom h2 {
+        color: #fff;
+    }
+
+    /* Área de saída */
+    #showOnPrint {
+        margin-top: 1.5rem;
+        padding: 30px;
+        min-height: 100vh;
+        font-family: 'Courier New', Courier, monospace; /* Fonte datilográfica */
+        font-size: 1.25em;
+        color: #000;
+    }
+
+    .texto-bloco {
+        margin-bottom: 2rem;
+        text-align: center; /* Centraliza todo o conteúdo do bloco */
+    }
+
+    .texto-bloco img {
+        max-width: 50%;
+        height: auto;
+        margin-bottom: 0.5rem;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .bloco-titulo {
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+</style>
+</head>
+
+<body>
+<nav class="navbar navbar-dark navbar-custom">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <div class="d-flex align-items-center">
+                <img src="logo.png" alt="Logo Cavalaria" style="width: 125px; height: 100px; padding-right: 0.8em;" class="d-flex align-top">
+                <h2 class="ms-3">Cavalaria do Oeste</h2>
+            </div>
+        </a>
+    </div>
+</nav>
+
+<div class="container" id="showOnPrint">
+    <div class="row mb-3">
+        <div class="col-12">
+            <h5 class="text-center">ÁREA DE ATUAÇÃO E PRIORIDADE EM AÇÕES</h5>
+            <h5 class="fw-bold text-center">CAVALARIA DO OESTE</h5>
+        </div>
+        <hr class="my-3">
+    </div>
+
+    <!-- Bloco 1 -->
+    <div class="texto-bloco">
+        <div class="bloco-titulo">Lemoyne</div>
+        <img src="Lemoyne.png" alt="Lemoyne">
+        <p>A Cavalaria de Lemoyne tem prioridade máxima na atuação dentro do próprio condado. Caso não haja contingente suficiente disponível, o apoio será solicitado à Cavalaria de New Hannover. Se ainda houver necessidade de reforço, o último recurso será a Cavalaria de New Austin.</p>
+    </div>
+
+    <!-- Bloco 2 -->
+    <div class="texto-bloco">
+        <div class="bloco-titulo">New Austin</div>
+        <img src="New Austin.png" alt="New Austin">
+        <p>A Cavalaria de New Austin possui prioridade de atuação dentro do seu condado. Caso não haja contingente disponível, o primeiro apoio será fornecido pela Cavalaria de New Hannover. Se ainda houver necessidade, a Cavalaria de Lemoyne será acionada como último recurso.</p>
+    </div>
+
+    <!-- Bloco 3 -->
+    <div class="texto-bloco">
+        <div class="bloco-titulo">New Hannover</div>
+        <img src="New Hannover.png" alt="New Hannover">
+        <p>A Cavalaria de New Hannover é responsável prioritariamente pela defesa e ações no seu próprio condado. Na ausência de contingente suficiente, o reforço será solicitado à Cavalaria de Lemoyne. Se houver necessidade adicional, a Cavalaria de New Austin será acionada como apoio final.</p>
+    </div>
+
+    <!-- Bloco 4 -->
+    <div class="texto-bloco">
+        <div class="bloco-titulo">Annesburg</div>
+        <img src="Annesburg.png" alt="Annesburg">
+        <p>A defesa e as operações em Annesburg têm uma prioridade compartilhada entre a Cavalaria de Lemoyne e a Cavalaria de New Hannover, atuando em conjunto de forma equilibrada. Na ausência ou insuficiência de ambos os contingentes, o apoio será solicitado, em último caso, à Cavalaria de New Austin.</p>
+    </div>
+
+    <!-- Bloco 5 -->
+    <div class="texto-bloco">
+        <div class="bloco-titulo">West Elizabeth</div>
+        <img src="West Elizabeth.png" alt="West Elizabeth">
+        <p>A segurança e atuação em West Elizabeth são responsabilidade compartilhada entre todas as Cavalarias — Lemoyne, New Hannover e New Austin. Os três contingentes podem ser acionados de forma conjunta, sem prioridade exclusiva, garantindo presença equilibrada e apoio mútuo conforme a necessidade operacional.</p>
+    </div>
+
+    <!-- Bloco 6 -->
+    <div class="texto-bloco">
+        <div class="bloco-titulo">Ambarino</div>
+        <img src="Ambarino.png" alt="Ambarino">
+        <p>A atuação em Ambarino é de responsabilidade conjunta de todas as Cavalarias — Lemoyne, New Hannover e New Austin. Assim como em West Elizabeth, não há prioridade exclusiva: os contingentes podem ser mobilizados em conjunto, de forma equilibrada, garantindo cobertura total do território e reforço mútuo conforme a necessidade.</p>
+    </div>
+
+    <div class="row d-flex mt-3 justify-content-center">
+        <div class="col-md-auto">
+            <p class="fst-italic">Lavrado e registrado por Chuck Allison e João Winstom Fox.</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

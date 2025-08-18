@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cavalaria do Oeste</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<style>
+    /* Navbar com imagem inteira */
+    .navbar-custom {
+        background-image: url('fundo-navbar.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        padding: 20px 0;
+    }
+
+    /* Área de saída impressa / exibida */
+    #showOnPrint {
+        display: none;
+        margin-top: 1.5rem;
+        padding: 30px;
+        min-height: 100vh;
+        font-family: 'Courier New', Courier, monospace; /* Fonte datilográfica */
+        font-size: 1.25em;
+        background-image: url('fundo-boletim.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        color: #000;
+    }
+
+    #showOnPrint #p1,
+    #showOnPrint #p2 {
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    /* Quando imprimir, esconder a área de inputs */
+    @media print {
+        #hideOnPrint {
+            display: none !important;
+        }
+
+        #showOnPrint {
+            display: block !important;
+        }
+    }
+</style>
+</head>
+
+<body>
+<nav class="navbar navbar-dark navbar-custom">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">
+            <div class="d-flex align-items-center">
+                <img src="logo.png"
+                     alt="Logo Cavalaria" style="width: 125px; height: 100px; padding-right: 0.8em;" class="d-flex align-top">
+                <h2 id="title" class="ms-3">Cavalaria do Oeste</h2>
+            </div>
+        </a>
+    </div>
+</nav>
+
+<div class="container" id="container">
+    <!-- Área que será impressa / exibida após gerar -->
+    <section id="showOnPrint">
+        <div class="row mt-3 justify-content-center">
+            <div class="col-2">
+                <img src="brasao1.png"
+                     alt="Brasão da Cavalaria" width="100%">
+            </div>
+            <div class="col-8 align-self-center">
+                <h5 class="text-center">CAVALARIA DO OESTE</h5>
+            </div>
+            <div class="col-2">
+                <img src="brasao2.png"
+                     alt="Brasão do OesteRP" width="100%">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-12">
+                <h5 class="text-center">BOLETIM DE OCORRÊNCIA - 1889</h5>
+                <h5 class="fw-bold text-center">CAVALARIA DO OESTE</h5>
+            </div>
+            <hr class="my-3">
+        </div>
+
+        <div id="paragrafo1" class="mt-4">
+            <div class="row mt-3 justify-content-center">
+                <div class="col-md-8">
+                    <div id="p1" style="white-space: pre-wrap;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="paragrafo2" class="mt-4">
+            <div class="row mt-3 mb-5 justify-content-center">
+                <div class="col-md-8">
+                    <div id="p2" style="white-space: pre-wrap;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row d-flex mt-3 justify-content-center">
+            <div class="col-md-auto">
+                <p id="dataAtual" class="fst-italic"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Área de inputs -->
+    <section id="hideOnPrint">
+        <div class="row mt-3">
+            <div class="col-12">
+                <h3 class="text-center">Emissão de Boletim - Cavalaria do Oeste</h3>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <h5>Emissão de boletim:</h5>
+            <div class="col-md-4">
+                <label class="form-label">Nome do denunciante:</label>
+                <input type="text" class="form-control" id="nomePessoa" placeholder="Insira o nome do denunciante.">
+            </div>
+
+            <div class="col-md-3">
+                <label class="form-label">Data do ocorrido:</label>
+                <input type="date" class="form-control" id="motivoConvoc">
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label">Nome do oficial:</label>
+                <input type="text" class="form-control" id="solicitacaoR" placeholder="Insira seu nome.">
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <h5>Relato do ocorrido:</h5>
+            <div class="col-md-8">
+                <label for="relatoPrisao" class="form-label">Conteúdo:</label>
+                <textarea class="form-control" id="relatoPrisao" rows="6" placeholder="Descreva o ocorrido..."></textarea>
+            </div>
+        </div>
+
+        <div class="row my-5">
+            <div class="col-12 d-grid">
+                <button type="button" id="btnGerar" class="btn btn-dark" onclick="elaborarOfc()">Gerar documento.</button>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+const meses = [
+  'janeiro','fevereiro','março','abril','maio','junho',
+  'julho','agosto','setembro','outubro','novembro','dezembro'
+];
+
+function formatarDiaMesAnoPara1899(dateValue) {
+  if(!dateValue) return {dia:'____', mes:'________________'};
+  try{
+    const d = new Date(dateValue + 'T00:00:00');
+    return { dia: d.getDate(), mes: meses[d.getMonth()] };
+  } catch(e){
+    return {dia:'____', mes:'________________'};
+  }
+}
+
+function preencherLinhaRotulo(rotulo, valor, larguraUnderline=40){
+  if(valor && valor.trim() !== '') return `${rotulo}: ${valor}`;
+  return `${rotulo}: ${'_'.repeat(larguraUnderline)}`;
+}
+
+function elaborarOfc(){
+  const nomeDenunciante = document.getElementById('nomePessoa').value;
+  const dataOcorridoValue = document.getElementById('motivoConvoc').value;
+  const nomeOficial = document.getElementById('solicitacaoR').value;
+  const relatoTexto = document.getElementById('relatoPrisao').value;
+
+  const { dia, mes } = formatarDiaMesAnoPara1899(dataOcorridoValue);
+
+  const linhaTitulo = 'BOLETIM DE OCORRÊNCIA\n\n';
+  const linhaNome = preencherLinhaRotulo('Nome do Denunciante', nomeDenunciante);
+  const linhaData = `Data do Ocorrido: ${dia} de ${mes} do ano de 1899`;
+  const linhaOficial = preencherLinhaRotulo('Nome do Oficial', nomeOficial);
+
+  const p1 = `${linhaTitulo}${linhaNome}\n\n${linhaData}\n\n${linhaOficial}\n\nRelato do Ocorrido:\n`;
+  const relatoFormatado = relatoTexto && relatoTexto.trim() !== '' ? relatoTexto : '____________________________________________________________\n\n';
+  const lavrado = `\n\nLavrado e registrado neste dia ${dia} do mês de ${mes} do ano de 1899.`;
+
+  document.getElementById('p1').textContent = p1;
+  document.getElementById('p2').textContent = relatoFormatado + lavrado;
+
+  document.getElementById('showOnPrint').style.display = 'block';
+  document.getElementById('showOnPrint').scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>

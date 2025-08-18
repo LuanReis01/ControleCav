@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cavalaria do Oeste</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+<link rel="stylesheet" href="./css/style.css" />
+
+<style>
+    /* Documento final (inicialmente oculto) */
+    #showOnPrint {
+        display: none;
+        padding: 30px;
+        min-height: 100vh;
+        font-family: 'Courier New', Courier, monospace;
+        background-image: url('fundo-boletim.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    /* Centralizar assinatura */
+    .assinaturas { text-align: center; }
+
+    /* Apenas a assinatura real em cursivo */
+    #assinaturaResp {
+        font-family: 'Lucida Handwriting', 'Brush Script MT', cursive;
+        font-size: 1.2em;
+    }
+
+    /* Linha de texto e cargo em datilografia */
+    #assinatura, #cargoAssinatura { font-family: 'Courier New', Courier, monospace; }
+
+    /* Navbar com imagem inteira */
+    .navbar-custom {
+        background-image: url('fundo-navbar.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        padding: 20px 0;
+    }
+
+    /* Estilo para impressão */
+    @media print {
+        #hideOnPrint { display: none; }
+        #showOnPrint { display: block !important; }
+    }
+</style>
+</head>
+
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-dark navbar-custom">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">
+            <div class="d-flex align-items-center">
+                <img src="logo.png" alt="Logo"
+                    style="width: 125px; height: 100px; padding-right: 0.8em;" class="d-flex align-top" />
+                <h2 id="title" class="ms-3">Cavalaria do Oeste</h2>
+            </div>
+        </a>
+    </div>
+</nav>
+
+<div class="container" id="container">
+
+<!-- Documento final -->
+<section id="showOnPrint">
+    <div class="row mt-3 justify-content-center">
+        <div class="col-2">
+            <img src="brasao1.png" alt="Brasão 1" width="100%" />
+        </div>
+        <div class="col-8 align-self-center">
+            <h5 class="text-center fw-bold" style="font-size:3em;">CAVALARIA DO OESTE</h5>
+        </div>
+        <div class="col-2">
+            <img src="brasao2.png" alt="Brasão" width="100%" />
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-12">
+            <h5 class="text-center">COMUNICADO OFICIAL</h5>
+            <h5 class="fw-bold text-center">COMITÊ DA CAVALARIA DO OESTE</h5>
+        </div>
+        <hr class="my-3" />
+    </div>
+
+    <div id="paragrafo1" class="mt-4">
+        <div class="row mt-3 justify-content-center">
+            <div class="col-md-6">
+                <p id="p1"></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="paragrafo2" class="mt-4">
+        <div class="row mt-3 mb-5 justify-content-center">
+            <div class="col-md-6">
+                <p id="p2"></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row d-flex justify-content-center mt-5">
+        <div class="col-4 ms-3 assinaturas">
+            <p class="assinaturaResp" id="assinaturaResp"></p>
+            <hr />
+            <p id="assinatura" class="fw-bold">Assinatura do Responsável</p>
+            <p id="cargoAssinatura" class="fst-italic"></p>
+        </div>
+    </div>
+
+    <div class="row d-flex mt-3 justify-content-center">
+        <div class="col-md-auto">
+            <p id="dataAtual" class="fst-italic"></p>
+        </div>
+    </div>
+</section>
+
+<!-- Formulário -->
+<section id="hideOnPrint">
+    <div class="row mt-3">
+        <div class="col-12">
+            <h3 class="text-center">Emissão de Promoção - Cavalaria do Oeste</h3>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-md-3">
+            <label for="nomePessoa" class="form-label">Nome do responsável:</label>
+            <input type="text" class="form-control" id="nomePessoa" placeholder="Nome do responsável" />
+        </div>
+        <div class="col-md-3">
+            <label for="cargoResponsavel" class="form-label">Cargo do responsável:</label>
+            <input type="text" class="form-control" id="cargoResponsavel" placeholder="Cargo do responsável" />
+        </div>
+        <div class="col-md-3">
+            <label for="nomePromovido" class="form-label">Nome do promovido:</label>
+            <input type="text" class="form-control" id="nomePromovido" placeholder="Nome do promovido" />
+        </div>
+        <div class="col-md-3">
+            <label for="cargoPromovido" class="form-label">Cargo promovido:</label>
+            <input type="text" class="form-control" id="cargoPromovido" placeholder="Cargo promovido" />
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-md-4">
+            <label for="cargoAnterior" class="form-label">Cargo anterior:</label>
+            <input type="text" class="form-control" id="cargoAnterior" placeholder="Cargo anterior" />
+        </div>
+        <div class="col-md-4">
+            <label for="dataPromocao" class="form-label">Data da promoção:</label>
+            <input type="date" class="form-control" id="dataPromocao" />
+        </div>
+    </div>
+
+    <div class="row my-5">
+        <div class="col-12 d-grid">
+            <button type="button" class="btn btn-dark" onclick="elaborarUp()">Gerar documento</button>
+        </div>
+    </div>
+</section>
+</div>
+
+<script>
+function elaborarUp() {
+    const nomeResp = document.getElementById('nomePessoa').value.trim();
+    const cargoResp = document.getElementById('cargoResponsavel').value.trim();
+    const nomePromo = document.getElementById('nomePromovido').value.trim();
+    const cargoPromovido = document.getElementById('cargoPromovido').value.trim();
+    const cargoAnterior = document.getElementById('cargoAnterior').value.trim();
+    const dataInput = document.getElementById('dataPromocao').value;
+
+    if (!nomeResp || !cargoResp || !nomePromo || !cargoPromovido || !cargoAnterior) {
+        alert('Por favor, preencha todos os campos.');
+        return;
+    }
+
+    const partes = dataInput.split('-');
+    const ano = partes[0];
+    const mesNumero = parseInt(partes[1], 10);
+    const dia = parseInt(partes[2], 10);
+    const meses = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho',
+        'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
+    const mes = meses[mesNumero - 1];
+
+    const texto1 = `Por meio deste, informamos que, após criteriosa avaliação de seus méritos, conduta e serviços prestados, Vossa Senhoria <strong>${nomePromo}</strong> está oficialmente promovido ao cargo de <strong>${cargoPromovido}</strong>.`;
+
+    const texto2 = `<strong>Dados da Promoção:</strong><br>
+    Nome do responsável: ${nomeResp}<br>
+    Cargo do responsável: ${cargoResp}<br>
+    Cargo anterior: ${cargoAnterior}<br>
+    Cargo promovido: ${cargoPromovido}<br>
+    Data da promoção: ${dia} de ${mes} de ${ano}.`;
+
+    document.getElementById('p1').innerHTML = texto1;
+    document.getElementById('p2').innerHTML = texto2;
+    document.getElementById('assinaturaResp').textContent = nomeResp;
+    document.getElementById('cargoAssinatura').textContent = cargoResp;
+
+    document.getElementById('dataAtual').textContent = `Oeste, ${dia} de ${mes} de ${ano}`;
+    document.getElementById('showOnPrint').style.display = 'block';
+}
+</script>
+</body>
+</html>
