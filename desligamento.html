@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Cavalaria do Oeste - Exoneração</title>
+<title>Cavalaria - Exoneração</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" />
 <style>
     /* Documento inicialmente oculto */
@@ -58,7 +58,7 @@
             <div class="d-flex align-items-center">
                 <img src="logo.png"
                     alt="Logo" style="width:125px; height:100px;" />
-                <h2 class="ms-3">Cavalaria do Oeste</h2>
+                <h2 class="ms-3">Cavalaria</h2>
             </div>
         </a>
     </div>
@@ -74,7 +74,7 @@
                 alt="Brasão 1" width="100%" />
         </div>
         <div class="col-8 align-self-center">
-            <h5 class="text-center fw-bold" style="font-size:3em;">CAVALARIA DO OESTE</h5>
+            <h5 class="text-center fw-bold" style="font-size:3em;">CAVALARIA</h5>
         </div>
         <div class="col-2">
             <img src="brasao2.png"
@@ -85,7 +85,7 @@
     <div class="row mb-3">
         <div class="col-12">
             <h5 class="text-center">COMUNICADO OFICIAL</h5>
-            <h5 class="fw-bold text-center">COMITÊ DA CAVALARIA DO OESTE</h5>
+            <h5 class="fw-bold text-center">COMITÊ DA CAVALARIA</h5>
         </div>
         <hr class="my-3" />
     </div>
@@ -126,7 +126,7 @@
 <section id="hideOnPrint">
     <div class="row mt-3">
         <div class="col-12">
-            <h3 class="text-center">Emissão de Exoneração - Cavalaria do Oeste</h3>
+            <h3 class="text-center">Emissão de Exoneração - Cavalaria</h3>
         </div>
     </div>
 
@@ -197,11 +197,11 @@ function elaborarExoneracao() {
     if (dataInput) {
         const [ano, mes, dia] = dataInput.split('-');
         const meses = ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
-        dataExibir = `Oeste, ${parseInt(dia)} de ${meses[parseInt(mes)-1]} de ${ano}`;
+        dataExibir = `A lei prevalece, ${parseInt(dia)} de ${meses[parseInt(mes)-1]} de ${ano}`;
     } else {
         const hoje = new Date();
         const meses = ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
-        dataExibir = `Oeste, ${hoje.getDate()} de ${meses[hoje.getMonth()]} de ${hoje.getFullYear()}`;
+        dataExibir = `A lei prevalece, ${hoje.getDate()} de ${meses[hoje.getMonth()]} de ${hoje.getFullYear()}`;
     }
 
     document.getElementById('dataAtual').textContent = dataExibir;
